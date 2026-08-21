@@ -118,18 +118,14 @@ main {
 
 .credentials img {
   width: auto;
+  height: 34px;
   mix-blend-mode: multiply;
 }
 
-.logo-everwell { height: 32px; }
-
 .logo-ekincare {
-  height: 26px;
   clip-path: inset(0 10% 0 0);
   margin-right: -1.4rem;
 }
-
-.logo-portea { height: 42px; }
 
 .block {
   margin-bottom: 5rem;
