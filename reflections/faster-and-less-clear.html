@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css?v=7" />
-  <link rel="stylesheet" href="writing.css?v=6" />
+  <link rel="stylesheet" href="writing.css?v=11" />
   <style>
     .chain { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; justify-content: center; }
     .chain .box { flex: 1 1 0; min-width: 92px; }
@@ -33,6 +33,10 @@
       font-family: 'JetBrains Mono', monospace; font-size: 0.56rem; letter-spacing: 0.06em; text-align: center; line-height: 1.2;
       text-transform: uppercase; color: var(--accent); padding: 0 0.1rem; flex: 0 0 auto;
     }
+    @media (max-width: 640px) {
+    }
+    .hc { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+    .gate-legend .hc { width: 22px; height: 22px; box-shadow: 0 0 0 3px var(--accent-soft); }
     .gate .diamond {
       width: 16px; height: 16px; transform: rotate(45deg);
       background: var(--accent); border-radius: 3px;
@@ -103,11 +107,22 @@
 
       <h2>The missing middle</h2>
       <p>Moving from an idea to implementation has always involved some friction.</p>
-      <p>A PM had to explain the requirements, sometimes even fight for what was important.<br>
-      An engineer had to push back on what did not make sense technically.<br>
-      Requirements got challenged.<br>
-      Trade-offs were debated.<br>
-      Someone had to explain why a particular decision mattered.</p>
+      <figure class="comic">
+        <img class="comic-full" src="images/sprint-planning.webp" width="1536" height="1024" loading="lazy" alt="A four-panel comic of a PM and an engineer in sprint planning. PM: Customers want this. Let's add it to the next sprint. Engineer: Wait, that's a really big change. PM: Seriously? It's just a button. Engineer: Yes, on the surface. But it touches the data model. PM: Sure, but how long can this take anyway? Engineer: Three weeks minimum. And lots of testing so we don't break anything. PM: But look, users drop off right at this point. Engineer: Okay. But is there a simpler way to solve this?" />
+        <div class="comic-panels" aria-hidden="true">
+          <img src="images/sprint-planning-1.webp" width="757" height="501" loading="lazy" alt="" />
+          <img src="images/sprint-planning-2.webp" width="757" height="501" loading="lazy" alt="" />
+          <img src="images/sprint-planning-3.webp" width="757" height="501" loading="lazy" alt="" />
+          <img src="images/sprint-planning-4.webp" width="757" height="501" loading="lazy" alt="" />
+        </div>
+      </figure>
+      <ul class="beats">
+        <li>A PM had to explain the requirements, sometimes even fight for what was important.</li>
+        <li>An engineer had to push back on what did not make sense technically.</li>
+        <li>Requirements got challenged.</li>
+        <li>Trade-offs were debated.</li>
+        <li>Someone had to explain why a particular decision mattered.</li>
+      </ul>
       <p>It took time.</p>
       <p>It was frustrating, no doubt.</p>
       <p>But that friction was doing something.</p>
@@ -125,29 +140,41 @@
       <p>It is to move quickly <strong>with the right checkpoints</strong>.</p>
       <p>For example:</p>
 
-      <figure>
-        <div class="dia">
-          <div class="gates">
-            <div class="box">Problem</div>
-            <div class="gate"><span class="diamond"></span></div>
-            <div class="box">PRD</div>
-            <div class="gate"><span class="diamond"></span></div>
-            <div class="box">Technical approach</div>
-            <div class="gate"><span class="diamond"></span></div>
-            <div class="box">Build</div>
-            <span class="plain-arrow">→</span>
-            <div class="box">Test</div>
+      <figure class="hcw" aria-label="Workflow with a human checkpoint between every stage: Problem, PRD, Technical approach, Build, Test, Ship, then learning feeds back into the next problem">
+        <div class="hcw-card">
+          <div class="hcw-flow">
+            <div class="hcw-stage">Problem</div><div class="hcw-handoff"><i class="hcw-arrow"></i><span class="hcw-gate"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="7" r="3.5"/><path d="M4.5 20v-2.2c0-3 2.4-5.3 5.3-5.3h4.4c2.9 0 5.3 2.3 5.3 5.3V20z"/></svg></span><i class="hcw-arrow"></i></div>
+            <div class="hcw-stage">PRD</div><div class="hcw-handoff"><i class="hcw-arrow"></i><span class="hcw-gate"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="7" r="3.5"/><path d="M4.5 20v-2.2c0-3 2.4-5.3 5.3-5.3h4.4c2.9 0 5.3 2.3 5.3 5.3V20z"/></svg></span><i class="hcw-arrow"></i></div>
+            <div class="hcw-stage hcw-wide">Technical<br>approach</div><div class="hcw-handoff"><i class="hcw-arrow"></i><span class="hcw-gate"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="7" r="3.5"/><path d="M4.5 20v-2.2c0-3 2.4-5.3 5.3-5.3h4.4c2.9 0 5.3 2.3 5.3 5.3V20z"/></svg></span><i class="hcw-arrow"></i></div>
+            <div class="hcw-stage">Build</div><div class="hcw-handoff"><i class="hcw-arrow"></i><span class="hcw-gate"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="7" r="3.5"/><path d="M4.5 20v-2.2c0-3 2.4-5.3 5.3-5.3h4.4c2.9 0 5.3 2.3 5.3 5.3V20z"/></svg></span><i class="hcw-arrow"></i></div>
+            <div class="hcw-stage">Test</div><div class="hcw-handoff"><i class="hcw-arrow"></i><span class="hcw-gate"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="7" r="3.5"/><path d="M4.5 20v-2.2c0-3 2.4-5.3 5.3-5.3h4.4c2.9 0 5.3 2.3 5.3 5.3V20z"/></svg></span><i class="hcw-arrow"></i></div>
+            <div class="hcw-stage hcw-ship">Ship</div>
           </div>
-          <div class="gate-legend"><span class="diamond"></span>gate check</div>
+          <div class="hcw-loop"><div class="hcw-loopline"></div><div class="hcw-learn">Learn</div></div>
+          <div class="hcw-mobilelearn"><span>Learn</span><span class="hcw-return"></span><span>Feed learning back into the next problem</span></div>
+          <div class="hcw-legend"><span class="hcw-gate"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="7" r="3.5"/><path d="M4.5 20v-2.2c0-3 2.4-5.3 5.3-5.3h4.4c2.9 0 5.3 2.3 5.3 5.3V20z"/></svg></span><strong>Human checkpoint</strong></div>
         </div>
       </figure>
+
+      <div class="hcw-table-wrap">
+        <table class="hcw-table">
+          <thead><tr><th scope="col">Handoff</th><th scope="col">What the checkpoint protects</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Problem → PRD</th><td>The team is solving the right problem.</td></tr>
+            <tr><th scope="row">PRD → Technical approach</th><td>The intended behaviour is understood before implementation decisions are made.</td></tr>
+            <tr><th scope="row">Technical approach → Build</th><td>The team understands the approach it is about to implement.</td></tr>
+            <tr><th scope="row">Build → Test</th><td>The team understands what was built and what needs verification.</td></tr>
+            <tr><th scope="row">Test → Ship</th><td>There is enough evidence to proceed with release.</td></tr>
+          </tbody>
+        </table>
+      </div>
 
       <p>The exact stages will vary by team.</p>
       <p>The principle is more important.</p>
       <p>Before the output of one stage becomes the input to the next, there should be a moment to ask:</p>
       <p class="beat">Do we understand this well enough to move forward?</p>
       <p>That becomes even more important when AI is doing a large part of the execution.</p>
-      <p>What those checkpoints should actually look like, what questions need to be asked and who should ask them is a whole other conversation.</p>
+      <p>What those checkpoints should actually look like, what questions need to be asked and who should ask them is something I explore in a separate piece.</p>
     </div>
 
     <a href="stopped-using-ai-as-a-chatbot.html" class="next">
