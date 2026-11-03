@@ -264,6 +264,25 @@ main {
   letter-spacing: -0.005em;
 }
 
+.qa-list {
+  list-style: none;
+}
+.qa-list li {
+  position: relative;
+  padding-left: 1.2rem;
+  margin-bottom: 0.45rem;
+}
+.qa-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
 .qa p em {
   color: var(--accent);
   font-style: italic;
@@ -333,4 +352,59 @@ footer {
   .hero { padding: 1.5rem 0 3rem; margin-bottom: 3rem; }
   .block { margin-bottom: 3.5rem; }
   .case-now { padding: 1.5rem 1rem; }
+}
+
+/* ---- Readability pass: nothing below ~14px, darker grey ---- */
+:root { --muted: #5a5650; }
+.section-label { font-size: 0.875rem; letter-spacing: 0.1em; }
+.hero-role { font-size: 0.9rem; }
+.case-meta { font-size: 0.875rem; letter-spacing: 0.06em; }
+.case-tags span { font-size: 0.875rem; letter-spacing: 0.05em; }
+.stat-label { font-size: 0.8rem; letter-spacing: 0.06em; }
+.stat-num { font-size: 1.45rem; }
+.section-sublabel { font-size: 1.05rem; }
+footer { font-size: 0.875rem; }
+.navlinks a { font-size: 1rem; }
+@media (max-width: 640px) { .navlinks a { font-size: 0.92rem; } }
+.case-meta, .case-tags span { font-size: 0.95rem; }
+.stat-label { font-size: 0.875rem; }
+.section-label { font-size: 0.95rem; }
+
+/* Phone nav: name on top, links in one row underneath */
+@media (max-width: 640px) {
+  .topnav { flex-direction: column; align-items: flex-start; gap: 0.45rem; padding: 0.8rem 1.1rem 0.7rem; }
+  .navlinks { display: flex; gap: 1.1rem; }
+  .navlinks a { margin-left: 0; font-size: 0.92rem; white-space: nowrap; }
+}
+
+/* Jump links land below the sticky nav */
+.block { scroll-margin-top: 5.5rem; }
+@media (max-width: 640px) { .block { scroll-margin-top: 6.5rem; } }
+
+/* ---- Mobile hamburger menu (replaces the stacked phone nav) ---- */
+.menu-btn { display: none; }
+@media (max-width: 640px) {
+  .topnav { flex-direction: row; align-items: center; gap: 0; padding: 0.9rem 1.1rem; flex-wrap: wrap; }
+  .menu-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; margin-right: -8px;
+    background: none; border: none; cursor: pointer; color: var(--text);
+  }
+  .menu-btn .bar { display: block; width: 20px; height: 2px; background: currentColor; border-radius: 2px; position: relative; transition: background 0.2s; }
+  .menu-btn .bar::before, .menu-btn .bar::after {
+    content: ""; position: absolute; left: 0; width: 20px; height: 2px; background: currentColor; border-radius: 2px; transition: transform 0.2s, top 0.2s;
+  }
+  .menu-btn .bar::before { top: -6px; }
+  .menu-btn .bar::after { top: 6px; }
+  .topnav.open .menu-btn .bar { background: transparent; }
+  .topnav.open .menu-btn .bar::before { top: 0; transform: rotate(45deg); }
+  .topnav.open .menu-btn .bar::after { top: 0; transform: rotate(-45deg); }
+
+  .navlinks { display: none; flex-basis: 100%; flex-direction: column; gap: 0; margin-top: 0.6rem; }
+  .topnav.open .navlinks { display: flex; }
+  .navlinks a {
+    margin-left: 0; font-size: 1.05rem; color: var(--text);
+    padding: 0.85rem 0; border-top: 1px solid var(--border);
+  }
+  .block { scroll-margin-top: 5rem; }
 }

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I stopped using AI as a chatbot. Paridhi Mehra</title>
+  <meta name="description" content="What changes when you start working with AI inside a project rather than just a chat." />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="I stopped using AI as a chatbot" />
+  <meta property="og:description" content="What changes when you start working with AI inside a project rather than just a chat." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%238b7ab8'/%3E%3Ctext x='50' y='70' font-family='Georgia, serif' font-size='62' font-weight='600' text-anchor='middle' fill='white'%3EP%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css?v=7" />
+  <link rel="stylesheet" href="writing.css?v=6" />
+  <style>
+    .cva { display: flex; flex-direction: column; gap: 1.2rem; }
+    .cva .dia.agent { border: 1.5px solid var(--accent); }
+    .cva .agent .dia-label { color: var(--accent); }
+
+    .row { display: grid; align-items: center; gap: 0.4rem; }
+    .row.chat { grid-template-columns: 1fr auto 1fr auto 1fr; }
+    .row .box { padding: 1rem 0.5rem; }
+    .swap { display: flex; flex-direction: column; align-items: center; font-size: 0.85rem; color: var(--muted); line-height: 1.15; }
+    .swap b { font-weight: 400; font-size: 1rem; color: var(--text); }
+
+    .row.brief { grid-template-columns: 1fr 2.2fr 1fr; }
+    .link { display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.9rem; color: var(--muted); text-align: center; }
+    .link .line { display: flex; align-items: center; color: var(--accent); font-size: 0.8rem; line-height: 1; }
+    .link .line::before { content: ""; flex: 1; border-top: 1.5px solid var(--accent); }
+    .link .line.fwd::after { content: "▶"; margin-left: -2px; }
+    .link .line.back { color: #b3abc2; flex-direction: row-reverse; }
+    .link .line.back::before { border-top: 1.5px dashed #b3abc2; }
+    .link .line.back::after { content: "◀"; margin-right: -2px; }
+
+    .folder { margin-top: 1.3rem; }
+    .folder-tab {
+      display: inline-block; background: var(--accent); color: #fff;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 0.4rem 0.8rem; border-radius: 6px 6px 0 0;
+    }
+    .folder-body {
+      border: 1.5px solid var(--accent); border-radius: 0 8px 8px 8px;
+      background: rgba(232, 224, 240, 0.3); padding: 1rem;
+    }
+    .files, .acts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
+    .file {
+      background: #fff; border: 1px solid var(--border); border-radius: 6px;
+      font-size: 0.92rem; padding: 0.5rem 0.4rem; text-align: center;
+    }
+    .acts { margin-top: 0.5rem; }
+    .act {
+      background: var(--accent); color: #fff; border-radius: 6px; text-align: center;
+      font-size: 0.92rem; font-weight: 600; padding: 0.6rem 0.3rem;
+    }
+    .loop {
+      margin-top: 0.6rem; text-align: center; font-size: 0.9rem; color: var(--accent); font-weight: 500;
+    }
+    .screenshot { width: 100%; max-width: 420px; }
+
+    @media (max-width: 560px) {
+      .row.chat { grid-template-columns: 1fr; }
+      .swap { flex-direction: row; gap: 0.6rem; justify-content: center; }
+      .swap b { transform: rotate(90deg); }
+      .row.brief { grid-template-columns: 1fr; }
+      .files, .acts { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body class="read-page">
+
+  <nav class="topnav">
+    <a href="../index.html" class="brand">Paridhi Mehra</a>
+    <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false"><span class="bar"></span></button>
+    <div class="navlinks">
+      <a href="../index.html#built">Work</a>
+      <a href="../index.html#how">Where I Fit</a>
+      <a href="../index.html#contact">Contact</a>
+      <a href="index.html">Reflections</a>
+    </div>
+  </nav>
+
+  <header class="hero-band">
+    <div class="inner">
+      <p class="series-label"><a href="index.html">Working with AI</a> · 04</p>
+      <h1>I stopped using AI as a chatbot</h1>
+      <p class="article-meta">5 min read</p>
+    </div>
+  </header>
+
+  <article class="read">
+
+    <div class="body">
+      <p>Claude Code, Codex and Cursor are generally seen as coding agents.</p>
+      <p>So if you are a PM, consultant, researcher or anyone else who does not spend their day writing code, it is easy to think:</p>
+      <p class="beat">This is not for me.</p>
+      <p>But there is a bigger idea underneath these tools.</p>
+
+      <h2>What is an agent?</h2>
+      <p>Most people first experience AI through a chat window, like the ChatGPT windows we are all very familiar with.</p>
+      <p>You ask a question, give it some context and get a response.</p>
+      <p>An AI agent works a little differently.</p>
+      <p>You give it access to a working environment, tell it what you want done and it can take multiple steps to get there. It can read files, create or modify them, use tools and come back to you when it needs a decision.</p>
+      <p>The difference is small when the task is small.</p>
+      <p>It becomes much more useful when the work involves many files, repeated steps or context that needs to stay together.</p>
+
+      <figure>
+        <div class="cva">
+          <div class="dia">
+            <p class="dia-label">Chat window</p>
+            <p class="dia-title">You are the transport layer</p>
+            <div class="row chat">
+              <div class="box">Your files<small>20 documents</small></div>
+              <div class="swap"><span>copy</span><b>⇄</b><span>save</span></div>
+              <div class="box you">You</div>
+              <div class="swap"><span>paste</span><b>⇄</b><span>reply</span></div>
+              <div class="box">Chat</div>
+            </div>
+            <div class="note"><strong>Context travels through the conversation</strong>and piles up over time</div>
+          </div>
+
+          <div class="dia agent">
+            <p class="dia-label">Agent</p>
+            <p class="dia-title">You set the direction</p>
+            <div class="row brief">
+              <div class="box you">You</div>
+              <div class="link">
+                <div class="line fwd"></div>
+                <span>Gives one brief</span>
+                <div class="line back"></div>
+                <span>Checks in when a decision is needed</span>
+              </div>
+              <div class="box accent">Agent</div>
+            </div>
+            <div class="folder">
+              <span class="folder-tab">Project folder</span>
+              <div class="folder-body">
+                <div class="files">
+                  <div class="file">Notes</div>
+                  <div class="file">Research</div>
+                  <div class="file">Data</div>
+                  <div class="file">Drafts</div>
+                </div>
+                <div class="acts">
+                  <div class="act">Reads</div>
+                  <div class="act">Analyses</div>
+                  <div class="act">Writes files</div>
+                  <div class="act">Cross-checks</div>
+                </div>
+                <div class="loop">↻ keeps going on its own</div>
+              </div>
+            </div>
+            <div class="note accent"><strong>Context stays in the project</strong>Nothing needs to be shared again and again</div>
+          </div>
+        </div>
+      </figure>
+
+      <p>Claude Code, Codex and Cursor are all examples of AI agents.</p>
+      <p>They are often seen solely as coding agents because developers use them to work on software projects. Claude Code and Codex are indeed built and positioned primarily around coding today.</p>
+      <p>But the underlying idea is broader than writing code.</p>
+      <p>The project you give an agent could contain code. But it could also contain spreadsheets, pitch decks, contracts, research papers or any other file.</p>
+      <p class="pull">Code is just one kind of file.</p>
+
+      <h2>Shifting Perspectives</h2>
+      <p>For the longest time, I kept these two very separate from each other. I used the chat windows for all my non-coding work and Claude Code was solely reserved for developing dashboards, applications and things which required coding.</p>
+      <p>The problem was that when you want shared context that stays and is taken into consideration every time you are working on a task, chat windows have their limitations.</p>
+      <p>Some issues I started noticing were responses violating the standing instructions going back to the default style, tokens running within a few minutes of starting the work, missing context and incorrect decisions.</p>
+      <p>That is when I stumbled upon an article, which helped me look at these agents as more than just coding agents.</p>
+
+      <h2>How to get started?</h2>
+      <p>Pretty much the same way you would brief a new joinee on your team.</p>
+
+      <div class="card">
+        <div class="card-head"><span class="card-label">Be clear about</span></div>
+        <div class="copy-text">
+          <ul>
+            <li>What do you want at the end?</li>
+            <li>What does the agent need to know?</li>
+            <li>What should it not do?</li>
+            <li>How should it handle uncertainty?</li>
+            <li>What should it show you before making changes?</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>You do not need to learn developer terminology.</p>
+      <p>You just need to explain the work in simple, clear English.</p>
+
+      <h2>A good first project</h2>
+      <p>Start with a simple project. Not the one your job depends on. ;-)</p>
+      <p>Create a folder and put all the relevant files in it. Make a copy if you are not sure.</p>
+      <p>I use Claude Code for this, so here I am explaining workflow through Claude Code. The steps are more or less the same across these tools.</p>
+      <p>Open Claude Code. It comes with your Claude subscription and is available on both the browser and desktop versions. If you are completely new to Claude Code toggle to the button which looks like &lt;/&gt;</p>
+
+      <figure>
+        <img class="screenshot" src="images/claude-code-toggle.png" alt="The Claude Code toggle, a button showing the &lt;/&gt; symbol" />
+      </figure>
+
+      <p>Then copy-paste this prompt:</p>
+
+      <div class="card">
+        <div class="card-head">
+          <span class="card-label">Starter prompt</span>
+          <button class="copy-btn" type="button" aria-label="Copy" title="Copy"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+        </div>
+        <div class="copy-text">
+          <p>Look through this &lt;folder name&gt; saved in &lt;location&gt;. The folder has all the context about the project I am working on, &lt;project name&gt;.</p>
+          <p>First, go through the files in this folder and absorb the context.</p>
+          <p>Then tell me:</p>
+          <ul>
+            <li>What you understand about the project and the problem we are trying to solve</li>
+            <li>What you understand about the current situation or workflow</li>
+            <li>What decisions or constraints are already clear</li>
+            <li>What is still unclear or missing</li>
+          </ul>
+          <p>Do not make any changes or start solving the problem yet. If something is unclear, ask me rather than making an assumption.</p>
+        </div>
+      </div>
+
+      <p>You can also share any standing instructions related to the project. For example:</p>
+
+      <div class="card">
+        <div class="card-head">
+          <span class="card-label">Standing instructions</span>
+          <button class="copy-btn" type="button" aria-label="Copy" title="Copy"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+        </div>
+        <div class="copy-text">
+          <ul>
+            <li>Ask me when something is unclear. Do not make assumptions.</li>
+            <li>Use the files in this folder as the source of truth. If something is missing, tell me rather than filling the gap.</li>
+            <li>Keep documents concise and use plain language.</li>
+            <li>Do not modify existing files unless I ask you to. Save new versions separately.</li>
+            <li>Do the detailed analysis in the files. In chat, give me only the key findings and decisions I need to make.</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>These instructions stay with the project, so you do not have to repeat them every time you start a new task.</p>
+      <p>Now, every time you need some help, you can use this space to work without having to share the context or instructions repeatedly.</p>
+      <p>And for anything new, just save the files in the same folder and ask the agent to look through those.</p>
+      <p>The agent can also use the same folder to save any output, document or other artifact it creates.</p>
+
+      <h2>From Chat to Context</h2>
+      <p>You are not just using AI to answer questions or generate something for you.</p>
+      <p>You are giving it a place to work, with the context and files it needs.</p>
+      <p>And once that context stays with the project, the way you work with AI starts to change.</p>
+      <p>You do not have to keep bringing the project to the AI.</p>
+      <p class="beat">The AI can work with you inside the project.</p>
+      <p>That is the shift from working with AI inside a chat to working with AI inside the project itself.</p>
+
+      <div class="card card-try">
+        <div class="card-head"><span class="card-label">Try this</span></div>
+        <p>Try it with a project you already have.</p>
+      </div>
+    </div>
+
+    <a href="ai-assisted-thinking.html" class="next">
+      <span class="card-label">Start from the beginning</span>
+      <span class="next-title">AI&#8209;assisted thinking vs AI&#8209;dependent thinking</span>
+    </a>
+    <a href="index.html" class="back">← All of Working with AI</a>
+  </article>
+
+  <footer><p>© 2026 Paridhi Mehra</p></footer>
+  <script src="copy.js?v=2"></script>
+  <script src="../nav.js"></script>
+</body>
+</html>

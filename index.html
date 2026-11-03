@@ -32,7 +32,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=7" />
 
   <!-- Schema.org structured data. Tells Google this is a Person. -->
   <script type="application/ld+json">
@@ -74,10 +74,12 @@
 
   <nav class="topnav">
     <a href="#top" class="brand">Paridhi Mehra</a>
+    <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false"><span class="bar"></span></button>
     <div class="navlinks">
       <a href="#built">Work</a>
-      <a href="#now">HappiNest</a>
+      <a href="#how">Where I Fit</a>
       <a href="#contact">Contact</a>
+      <a href="reflections/index.html">Reflections</a>
     </div>
   </nav>
 
@@ -123,6 +125,20 @@
         <p>My work sits at the intersection of behavioural science and implementation. The question isn't simply whether an AI solution works, but whether it can work here, within the realities of an existing healthcare system.</p>
         <p>That means evaluating whether a solution is appropriate for the setting, mapping how it fits into existing workflows, and understanding what it takes for frontline workers to trust it and adopt it without adding friction to their work.</p>
         <p>Underneath it all, we are building a framework for integrating AI systems into healthcare responsibly and effectively.</p>
+      </article>
+
+      <article class="case">
+        <h2>HappiNest</h2>
+        <p class="case-meta">Founder &amp; CEO · Bengaluru · 2023–present</p>
+        <div class="case-tags">
+          <span>Maternal mental health</span>
+          <span>Bootstrapped</span>
+          <span>EBITA+</span>
+        </div>
+        <p>I started HappiNest after my own difficult transition into motherhood. Even with my medical training I couldn't recognise that what I was feeling had a name. Each year 22% of mothers in India go through postpartum depression, yet there is very limited systemic support to help them identify what they are going through and get help in time.</p>
+        <p>HappiNest is India's first maternal mental health platform, with a network of certified therapists, psychiatrists and coaches supporting families across the country.</p>
+        <p>Founding has been the sharpest teacher. Building HappiNest from scratch has taught me more about users, unit economics and trade-offs than any roadmap ever could.</p>
+        <a href="https://www.happinest.life/" class="link-out" target="_blank" rel="noopener">happinest.life →</a>
       </article>
 
       <article class="case">
@@ -174,19 +190,6 @@
       </article>
     </section>
 
-    <section class="block" id="now">
-      <p class="section-label">What I'm Building Now</p>
-      <p class="section-sublabel"><em>(my own bet)</em></p>
-
-      <article class="case case-now">
-        <h2>HappiNest, maternal mental wellbeing</h2>
-        <p class="case-meta">Founder &amp; CEO · 2023–present · Bootstrapped, EBITA+</p>
-        <p>I started HappiNest after my own struggle with postpartum. Even with my medical training I couldn't recognise that what I was feeling had a name. The gap in maternal mental health isn't medication or information. It is a place to be heard, and a person to help you make sense of what you are feeling before you can name it yourself.</p>
-        <p>That is what HappiNest is. India's first maternal mental health platform, with a network of certified therapists, psychiatrists and coaches supporting families across the country.</p>
-        <p>Founding has been the sharpest teacher I have had. Building HappiNest from scratch has taught me more about users, unit economics and trade-offs than any roadmap ever could.</p>
-        <a href="https://www.happinest.life/" class="link-out" target="_blank" rel="noopener">happinest.life →</a>
-      </article>
-    </section>
 
     <section class="block" id="how">
       <p class="section-label">How I Work</p>
@@ -199,7 +202,12 @@
 
       <div class="qa">
         <h3>What kind of work am I open to?</h3>
-        <p>Setting up product practices where there isn't one yet. Coaching PMs at any career stage. Helping founders and product leaders build with long-term product thinking.</p>
+        <ul class="qa-list">
+          <li>Setting up product practices where there isn't one yet.</li>
+          <li>Coaching PMs at any career stage.</li>
+          <li>Helping founders and product leaders build with long-term product thinking.</li>
+          <li>Helping teams adopt AI and build AI&#8209;native workflows.</li>
+        </ul>
       </div>
     </section>
 
@@ -219,5 +227,6 @@
     <p>© 2026 Paridhi Mehra</p>
   </footer>
 
+  <script src="nav.js"></script>
 </body>
 </html>
